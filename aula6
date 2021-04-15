@@ -1,0 +1,48 @@
+float posX = 30;
+float velX = 1;
+
+float posY = 730;
+float velY = -1;
+
+color a = color(255, 175, 0);
+color b = color(155, 78, 6);
+color interA = lerpColor(a, b, 0.88);
+color interB = lerpColor(a, b, 0.22);
+
+void setup() {
+
+  noCursor();
+  fullScreen();
+  background(255);
+}
+
+void draw() {
+  
+  if (mouseX > 0 && mouseX < 334) {
+    background(a);
+  }
+  if (mouseX > 334 && mouseX < 668) {
+    background(interB);
+  }
+  if (mouseX > 668 && mouseX < 1002) {
+    background(interA);
+  }
+  if (mouseX>1002) {
+    background(b);
+  }
+
+  fill(143, 16, 157, 210); 
+  noStroke();
+
+  posX = posX + velX;
+  rect(posX, 200, 600, 350); 
+  if (posX < 0 || posX > width - 600) {
+    velX = velX* -1;
+  }
+
+  posY = posY + velY;
+  rect(posY, 200, 600, 350);
+  if (posY < 0 || posY > width - 600) {
+    velY = velY* -1;
+  }
+}
